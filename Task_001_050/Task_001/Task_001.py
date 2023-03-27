@@ -26,3 +26,8 @@ x = 3
 y = 5
 
 print(get_naturals_multiples_sum(below, x, y))
+
+"""
+answer
+233168
+"""
