@@ -2,9 +2,6 @@
 #
 # What is the largest prime factor of the number 600851475143 ?
 
-import time
-
-time1 = time.time()
 
 def get_max_prime_divider(num):
     while num % 2 == 0:
@@ -20,13 +17,9 @@ def get_max_prime_divider(num):
         return div - 1
 
 
-# 600851475143
-number = 60085147514312312312
+number = 600851475143
 max_prime_div = get_max_prime_divider(number)
 print(max_prime_div)
-
-time2 = time.time()
-print(f"{(time2 - time1) * 1000} ms")
 
 """
 Answer:  6857
