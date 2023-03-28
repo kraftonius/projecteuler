@@ -2,10 +2,8 @@
 # we get 3, 5, 6 and 9. The sum of these multiples is 23.
 # Find the sum of all the multiples of 3 or 5 below 1000.
 
-"""
-answer
-233168
 
+"""
 one line
 print(sum(range(0, 1000, 3)) + sum(range(0, 1000, 5)) - sum(range(0, 1000, 15)))
 
@@ -28,6 +26,5 @@ y = 5
 print(get_naturals_multiples_sum(below, x, y))
 
 """
-answer
-233168
+Answer: 233168  
 """
