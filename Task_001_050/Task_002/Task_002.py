@@ -24,3 +24,7 @@ maximum = 4000000
 my_fib_list = even_fibonacci(maximum)
 print(my_fib_list)
 print(sum(my_fib_list))
+
+"""
+Answer:  4613732
+"""
