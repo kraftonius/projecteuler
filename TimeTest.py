@@ -3,22 +3,22 @@ import time
 time1 = time.time()
 # //////////////////////
 
-try:
-    for i in range(999, 99, -1):
-        n = i
-        r_n = 0
-        while n != 0:
-            r_n = r_n * 10 + n % 10
-            n //= 10
-        pal = i * 1000 + r_n
-        for j in range(999, 99, -1):
-            if pal % j == 0 and pal / j <= 999:
-                print(pal)
-                raise StopIteration
-except StopIteration:
-    pass
+
+def get_primes(n):
+    sieve = [True] * n
+    sieve[:2] = [False, False]
+    primes = []
+    for prime, is_prime in enumerate(sieve):
+        if not is_prime:
+            continue
+        primes.append(prime)
+        for not_prime in range(prime * prime, n, prime):
+            sieve[not_prime] = False
+    return primes
 
 
+number_max = 2 * 10 ** 6
+print(sum(get_primes(number_max)))
 
 # //////////////////////
 time2 = time.time()

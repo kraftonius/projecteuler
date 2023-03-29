@@ -27,6 +27,9 @@ def get_abc_prod(abc_s):
 abc_sum = 1000
 print(get_abc_prod(abc_sum))
 
+"""
+Answer: 31875000
+"""
 
 
 
