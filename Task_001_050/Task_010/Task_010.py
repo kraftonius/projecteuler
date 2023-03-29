@@ -17,3 +17,7 @@ def get_primes(n):
 
 number_max = 2 * 10 ** 6
 print(sum(get_primes(number_max)))
+
+"""
+Answer: 142913828922
+"""
