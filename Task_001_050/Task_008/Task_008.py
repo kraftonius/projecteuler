@@ -30,11 +30,11 @@ def create_digit_list(digit_in_text):
     return d_list
 
 
-def get_adjacent_max_prod(d_list):
+def get_adjacent_max_prod(d_list, adj):
     prod_max = 1
-    for i in range(len(d_list) - 12):
+    for i in range(len(d_list) - adj + 1):
         prod = 1
-        for j in range(13):
+        for j in range(adj):
             prod *= d_list[i + j]
         if prod > prod_max:
             prod_max = prod
@@ -63,9 +63,10 @@ digit_text = """
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450
 """
+adjacent = 13
 digit_text = ''.join(digit_text.split('\n'))
 digit_list = create_digit_list(digit_text)
-maximum = get_adjacent_max_prod(digit_list)
+maximum = get_adjacent_max_prod(digit_list, adjacent)
 print(maximum)
 
 """
