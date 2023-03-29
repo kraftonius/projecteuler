@@ -93,3 +93,6 @@ grid = """08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 grid_list = [list(map(int, x.split())) for x in grid.split("\n")]
 x = get_max_adj_prod(grid_list, adjacent)
 print(x)
+"""
+Answer: 70600674
+"""
