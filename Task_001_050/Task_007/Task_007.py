@@ -15,6 +15,10 @@ def get_primes(n):
     return primes
 
 
-sequence = 1000000
+sequence = 10001
 primes_list = (get_primes(sequence * 20))
 print(primes_list[sequence - 1])
+
+"""
+Answer: 104743
+"""
