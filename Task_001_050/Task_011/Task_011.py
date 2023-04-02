@@ -27,48 +27,61 @@
 # (up, down, left, right, or diagonally) in the 20×20 grid?
 
 
+# def get_max_adj_prod_old(matrix, adj):
+#     prod_max = 1
+#     for i in range(len(matrix)):
+#         for j in range(len(matrix[0]) - adj + 1):
+#             prod = 1
+#             for k in range(adj):
+#                 prod *= matrix[i][j]
+#                 j += 1
+#             if prod > prod_max:
+#                 prod_max = prod
+#     for j in range(len(matrix[0])):
+#         for i in range(len(matrix) - adj + 1):
+#             prod = 1
+#             for k in range(adj):
+#                 prod *= matrix[i][j]
+#                 i += 1
+#             if prod > prod_max:
+#                 prod_max = prod
+#     for i in range(len(matrix) - adj + 1):
+#         for j in range(len(matrix[0]) - adj + 1):
+#             prod = 1
+#             i_a = i
+#             for k in range(adj):
+#                 prod *= matrix[i_a][j]
+#                 i_a += 1
+#                 j += 1
+#             if prod > prod_max:
+#                 prod_max = prod
+#     for i in range(adj - 1, len(matrix)):
+#         for j in range(len(matrix[0]) - adj + 1):
+#             prod = 1
+#             i_a = i
+#             for k in range(adj):
+#                 prod *= matrix[i_a][j]
+#                 i_a -= 1
+#                 j += 1
+#             if prod > prod_max:
+#                 prod_max = prod
+#     return prod_max
+
+
 def get_max_adj_prod(matrix, adj):
-    prod_max = 1
-    for i in range(len(matrix)):
-        for j in range(len(matrix[0]) - adj + 1):
-            prod = 1
-            for k in range(adj):
-                prod *= matrix[i][j]
-                j += 1
-            if prod > prod_max:
-                prod_max = prod
-    for j in range(len(matrix[0])):
-        for i in range(len(matrix) - adj + 1):
-            prod = 1
-            for k in range(adj):
-                prod *= matrix[i][j]
-                i += 1
-            if prod > prod_max:
-                prod_max = prod
+    prod_max = 0
     for i in range(len(matrix) - adj + 1):
         for j in range(len(matrix[0]) - adj + 1):
-            prod = 1
-            i_a = i
+            prod_max_list = [1, 1, 1, 1]
             for k in range(adj):
-                prod *= matrix[i_a][j]
-                i_a += 1
-                j += 1
-            if prod > prod_max:
-                prod_max = prod
-    for i in range(adj - 1, len(matrix)):
-        for j in range(len(matrix[0]) - adj + 1):
-            prod = 1
-            i_a = i
-            for k in range(adj):
-                prod *= matrix[i_a][j]
-                i_a -= 1
-                j += 1
-            if prod > prod_max:
-                prod_max = prod
+                prod_max_list[0] *= matrix[i][j + k]
+                prod_max_list[1] *= matrix[i + k][j]
+                prod_max_list[2] *= matrix[i + k][j + k]
+                prod_max_list[3] *= matrix[i + k][j + adj - 1 - k]
+            prod_max = max(max(prod_max_list), prod_max)
     return prod_max
 
 
-adjacent = 4
 grid = """08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00
 81 49 31 73 55 79 14 29 93 71 40 67 53 88 30 03 49 13 36 65
@@ -89,10 +102,12 @@ grid = """08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16
 20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48"""
+adjacent = 4
 
 grid_list = [list(map(int, x.split())) for x in grid.split("\n")]
-x = get_max_adj_prod(grid_list, adjacent)
-print(x)
+max_adjacent_prod = get_max_adj_prod(grid_list, adjacent)
+print(max_adjacent_prod)
+
 """
 Answer: 70600674
 """
